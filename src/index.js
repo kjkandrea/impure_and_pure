@@ -9,7 +9,7 @@ const app = {
   },
 
   fetchMembers () { // impure
-    return member.get()
+    return member.get() // http request ( fake )
   },
 
   appendElements (els, targetEl) { // pure
