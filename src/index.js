@@ -57,7 +57,7 @@ const app = {
   getDetailText(member) { // pure
     return Object
       .entries(member)
-      .map(([k, v]) => k + ' :  ' + v)
+      .map(([k, v]) => k + ' : ' + v)
       .join('\n')
   }
 }
