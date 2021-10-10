@@ -12,7 +12,7 @@ const app = {
     return member.get()
   },
 
-  appendElements(els, targetEl) { // pure
+  appendElements (els, targetEl) { // pure
     els.forEach(el => targetEl.append(el))
   },
 
@@ -54,7 +54,7 @@ const app = {
     alert(app.getDetailText(member))
   },
 
-  getDetailText(member) { // pure
+  getDetailText (member) { // pure
     return Object
       .entries(member)
       .map(([k, v]) => k + ' : ' + v)
