@@ -1,0 +1,25 @@
+.table {
+    display: table;
+    border-right: 1px #999 solid;
+    border-bottom: 1px #999 solid;
+}
+
+.head {
+    display: table-header-group;
+    font-weight: 700;
+}
+
+.body {
+    display: table-row-group;
+}
+
+.row {
+    display: table-row;
+}
+
+.row > * {
+    display: table-cell;
+    padding: 5px;
+    border-top: 1px #999 solid;
+    border-left: 1px #999 solid;
+}

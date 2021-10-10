@@ -1,35 +1,25 @@
-const asyncBack = (data, ms = 250) =>
-  new Promise(resolve => setTimeout(() => resolve(data), ms))
+import storage from './storage.js'
+import { members } from './const.js'
+
+const NAME_SPACE = 'member'
 
 const member = {
-  data: [
-    {
-      id: 1,
-      name: 'mummu',
-      age: 3,
-      job: 'chief'
-    },
-    {
-      id: 2,
-      name: 'jk',
-      age: 29,
-      job: 'developer'
-    },
-    {
-      id: 3,
-      name: 'sj',
-      age: 29,
-      job: 'devops'
-    },
-    {
-      id: 4,
-      name: 'andrea',
-      age: 30,
-      job: 'developer'
-    },
-  ],
+  data: fetchData(),
   get() {
-    return asyncBack(this.data)
+    return this.data
+  },
+  post() {
+    storage.set(NAME_SPACE, this.data)
+  }
+}
+
+function fetchData () {
+  const savedData = storage.get(NAME_SPACE)
+  if (savedData) {
+    return savedData;
+  } else {
+    storage.set(NAME_SPACE, members)
+    return storage.get(NAME_SPACE)
   }
 }
 
