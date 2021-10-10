@@ -1,5 +1,34 @@
 import member from './model/member.js'
 
+class App extends HTMLElement {
+  connectedCallback() {
+    const app = this.wrapper
+    app.appendChild(this.title)
+    app.appendChild(this.memberList)
+
+    this.appendChild(app)
+  }
+  get wrapper() {
+    const wrapper = document.createElement('main')
+    wrapper.id = 'app'
+    return wrapper
+  }
+  get title() {
+    const h1 = document.createElement('h1');
+    h1.innerText = '팀원 목록'
+    return h1
+  }
+  get memberList() {
+    const table = document.createElement('table')
+    const tbody = document.createElement('tbody')
+    tbody.id = 'member-list'
+    table.appendChild(tbody)
+    return table;
+  }
+}
+
+customElements.define('app-component', App)
+
 const app = {
   memberListEl: document.getElementById('member-list'),
 
