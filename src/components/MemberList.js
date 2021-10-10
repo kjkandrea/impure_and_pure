@@ -1,4 +1,7 @@
-import member from '../model/member.js'
+import Member from '../model/member/index.js'
+import EditCell from './EditCell.js'
+
+export const member = new Member()
 
 class MemberList extends HTMLElement {
   constructor () {
@@ -7,8 +10,7 @@ class MemberList extends HTMLElement {
     this.el.className = 'table'
 
     const data = member.get();
-    console.log(data)
-    if(data) this.render(data)
+    if (data) this.render(data)
     this.bindEvent()
     this.append(this.el)
   }
@@ -26,7 +28,9 @@ class MemberList extends HTMLElement {
         ${data.map(member => `
           <div class="row">
               <div>${member.id}</div>
-              <div>${member.name}</div>
+              <div class="cell">
+                <edit-cell uid=${member.id} value=${member.name} />
+              </div>
               <div>${member.age}</div>
               <div>${member.job}</div>
           </div>
@@ -38,4 +42,7 @@ class MemberList extends HTMLElement {
 
   }
 }
+
+customElements.define('edit-cell', EditCell)
+
 export default MemberList

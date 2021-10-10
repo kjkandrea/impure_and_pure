@@ -23,3 +23,26 @@
     border-top: 1px #999 solid;
     border-left: 1px #999 solid;
 }
+
+.cell {
+    padding-right: 10px;
+    position: relative;
+    font-size: 1rem;
+}
+
+input {
+    border: none;
+}
+
+.cell input {
+    padding: 0;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    font-size: inherit;
+}
+
+.cell input:read-only {
+    opacity: 0;
+}

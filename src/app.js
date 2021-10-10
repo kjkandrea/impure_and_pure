@@ -1,7 +1,5 @@
 import MemberList from './components/MemberList.js'
 
-import member from './model/member.js'
-
 class App extends HTMLElement {
   constructor() {
     super()

@@ -1,15 +1,14 @@
-import storage from './storage.js'
-import { members } from './const.js'
+import storage from '../storage.js'
+import { members } from '../const.js'
 
 const NAME_SPACE = 'member'
 
-const member = {
-  data: fetchData(),
+class Member {
+  constructor () {
+    this.data = fetchData()
+  }
   get() {
     return this.data
-  },
-  post() {
-    storage.set(NAME_SPACE, this.data)
   }
 }
 
@@ -23,4 +22,4 @@ function fetchData () {
   }
 }
 
-export default member
+export default Member
