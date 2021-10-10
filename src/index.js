@@ -1,17 +1,17 @@
 import member from './model/member.js'
+const { pipe } = window.R
 
 const app = {
   memberListEl: document.getElementById('member-list'),
   init () {
-    app.render()
+    app.render().error(console.error)
   },
-  render () { // render main 함수. impure + pure 합성
-    app
-      .fetchMembers()
-      .then(() => { // FIXME
-        const rows = app.getRowsEl()
-        app.appendElements(rows, app.memberListEl)
-      })
+  async render () { // render main 함수. impure + pure 합성
+    const members = await app.fetchMembers()
+    pipe(
+      data => app.getRowsEl(data),
+      rows => app.appendElements(rows, app.memberListEl)
+    )(members)
   },
   fetchMembers () { // impure
     return member.get()
