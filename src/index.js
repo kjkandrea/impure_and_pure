@@ -3,37 +3,43 @@ const { pipe } = window.R
 
 const app = {
   memberListEl: document.getElementById('member-list'),
-  init () {
-    app.render().catch(console.error)
-  },
-  async render () { // render main 함수. impure + pure 합성
+
+  async render () { // main 함수. impure + pure 합성
     const members = await app.fetchMembers()
     pipe(
       data => app.getRowsEl(data),
       rows => app.appendElements(rows, app.memberListEl)
     )(members)
   },
+
   fetchMembers () { // impure
     return member.get()
   },
+
   appendElements(els, targetEl) { // pure
     els.forEach(el => targetEl.append(el))
   },
+
   getRowsEl (members) { // pure
     return members.map(member => app.getRowEl(member))
   },
+
   getRowEl (member) { // pure
     const tr = document.createElement('tr')
     const button = app.getButtonEl('detail')
     button.addEventListener('click', () => app.viewDetail(member))
     const data = Object.values(member).concat(app.getColEl(button))
+    const appendCols = (data, el) =>
+      data
+        .map(d => app.getColEl(d))
+        .forEach(col => el.append(col)
+    )
 
-    data
-      .map(data => app.getColEl(data))
-      .forEach(col => tr.append(col))
+    appendCols(data, tr)
 
     return tr
   },
+
   getColEl (data) { // pure
     const isEl = typeof data === 'object' && data instanceof HTMLElement
 
@@ -41,15 +47,18 @@ const app = {
     isEl ? td.append(data) : td.innerText = data
     return td
   },
+
   getButtonEl (text) { // pure
     const button = document.createElement('button')
     button.innerText = text
     return button
   },
+
   viewDetail (member) { // pure
     alert(app.getDetailText(member))
   },
-  getDetailText(member) {
+
+  getDetailText(member) { // pure
     return Object
       .entries(member)
       .map(([k, v]) => k + ' :  ' + v)
@@ -57,4 +66,4 @@ const app = {
   }
 }
 
-document.addEventListener('DOMContentLoaded', app.init.bind(undefined))
+document.addEventListener('DOMContentLoaded', app.render)
