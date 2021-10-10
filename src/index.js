@@ -22,15 +22,16 @@ const app = {
   getRowsEl (members) { // pure
     return members.map(member => app.getRowEl(member))
   },
-  getRowEl (object) { // pure
+  getRowEl (member) { // pure
     const tr = document.createElement('tr')
+    const button = app.getButtonEl('detail')
+    button.addEventListener('click', () => app.viewDetail(member))
+    const data = Object.values(member).concat(app.getColEl(button))
 
-    Object
-      .values(object)
+    data
       .map(data => app.getColEl(data))
       .forEach(col => tr.append(col))
 
-    const buttonCol = tr.append(app.getColEl(app.getButton('details')))
     return tr
   },
   getColEl (data) { // pure
@@ -40,10 +41,19 @@ const app = {
     isEl ? td.append(data) : td.innerText = data
     return td
   },
-  getButton (text) {
+  getButtonEl (text) { // pure
     const button = document.createElement('button')
     button.innerText = text
     return button
+  },
+  viewDetail (member) { // pure
+    alert(app.getDetailText(member))
+  },
+  getDetailText(member) {
+    return Object
+      .entries(member)
+      .map(([k, v]) => k + ' :  ' + v)
+      .join('\n')
   }
 }
 
