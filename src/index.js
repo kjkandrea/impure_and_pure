@@ -1,15 +1,11 @@
 import member from './model/member.js'
-const { pipe } = window.R
 
 const app = {
   memberListEl: document.getElementById('member-list'),
 
   async render () { // main 함수. impure + pure 합성
     const members = await app.fetchMembers()
-    pipe(
-      data => app.getRowsEl(data),
-      rows => app.appendElements(rows, app.memberListEl)
-    )(members)
+    app.appendElements(app.getRowsEl(members), app.memberListEl)
   },
 
   fetchMembers () { // impure
