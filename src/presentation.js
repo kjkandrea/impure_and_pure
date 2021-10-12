@@ -30,7 +30,10 @@ const goBusinessLogin = () => {}
 const goCommonLogin = () => {}
 
 // develop
-const validation = () => {}
+const validation = data => {
+  // ...
+  return data
+}
 
 const makeRequest = pipe(
   filterProperties,
