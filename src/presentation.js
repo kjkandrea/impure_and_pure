@@ -9,14 +9,18 @@ import { pipe, curry } from 'ramda'
  */
 
 // sample
-const ipm = () => {}
 const formData = {
-  //...
+  id: '',
+  password: '',
+  confirmPassword: '',
+  phoneNumber: '',
+  companyName: '',
+  policyAgree: true
 }
 const isLoggedIn = true
 
 // develop
-const validation = () => ipm
+const validation = () => {}
 
 const makeRequest = pipe(
   filterProperties,
@@ -24,7 +28,7 @@ const makeRequest = pipe(
   mapPropertiesValue,
 )
 
-const postRequest = () => ipm
+const postRequest = () => {}
 
 const main = (next, data) => pipe (
   validation,
@@ -35,8 +39,8 @@ const main = (next, data) => pipe (
 
 const curryMain = curry(main)
 
-const loggedInNext = () => ipm
-const guestNext = () => ipm
+const loggedInNext = () => {}
+const guestNext = () => {}
 const loggedInMain = curryMain(loggedInNext)
 const guestMain = curryMain(guestNext)
 
@@ -45,9 +49,9 @@ isLoggedIn
   : guestMain(formData)
 
 
-function filterProperties () { return ipm }
-function mapPropertiesKey () { return ipm } // bug here!
-function mapPropertiesValue () { return ipm }
+function filterProperties () { return {} }
+function mapPropertiesKey () { return {} } // bug here!
+function mapPropertiesValue () { return {} }
 
 
 
