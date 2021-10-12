@@ -29,7 +29,7 @@ const makeRequest = pipe(
 )
 
 const postRequest = async () => {
-  await new XMLHttpRequest()
+  await fetch()
   return {}
 }
 
