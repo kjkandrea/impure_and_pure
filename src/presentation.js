@@ -10,6 +10,7 @@ import { pipe, curry } from 'ramda'
 
 // sample
 const formData = {
+  isBusiness: false,
   id: 'andrea',
   password: '111111a!',
   confirmPassword: '111111a!',
