@@ -18,7 +18,7 @@ const formData = {
   policyAgree: true // 검증단계에서 사용하고 리퀘스트에서 제거
 }
 
-const post = async () => {
+const post = async req => {
   await new XMLHttpRequest()
   return {}
 }
