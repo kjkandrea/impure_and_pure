@@ -10,10 +10,10 @@ import { pipe, curry } from 'ramda'
 
 // sample
 const formData = {
-  id: 'andrea',
+  id: 'andrea', // userid
   password: '111111a!',
-  confirmPassword: '111111a!',
-  phoneNumber: '010-1234-5678',
+  confirmPassword: '111111a!', // password
+  phoneNumber: '010-1234-5678', // phone. 하이픈 제거
   companyName: 'nhn commerce',
   policyAgree: true
 }
