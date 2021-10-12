@@ -10,11 +10,11 @@ import { pipe, curry } from 'ramda'
 
 // sample
 const formData = {
-  id: '',
-  password: '',
-  confirmPassword: '',
-  phoneNumber: '',
-  companyName: '',
+  id: 'andrea',
+  password: '111111a!',
+  confirmPassword: '111111a!',
+  phoneNumber: '01012345678',
+  companyName: 'nhn commerce',
   policyAgree: true
 }
 const isLoggedIn = true
