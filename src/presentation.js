@@ -9,8 +9,7 @@ import { pipe, curry } from 'ramda'
  */
 
 // sample
-const formData = {
-  isBusiness: false,
+const formData = {,
   id: 'andrea',
   password: '111111a!',
   confirmPassword: '111111a!',
@@ -18,7 +17,7 @@ const formData = {
   companyName: 'nhn commerce',
   policyAgree: true
 }
-const isLoggedIn = true
+const isBusiness = true
 
 // develop
 const validation = () => {}
@@ -42,12 +41,12 @@ const curryMain = curry(main)
 
 const loggedInNext = () => {}
 const guestNext = () => {}
-const loggedInMain = curryMain(loggedInNext)
-const guestMain = curryMain(guestNext)
+const businessMain = curryMain(loggedInNext)
+const commonMain = curryMain(guestNext)
 
-isLoggedIn
-  ? loggedInMain(formData)
-  : guestMain(formData)
+isBusiness
+  ? businessMain(formData)
+  : commonMain(formData)
 
 
 function filterProperties () { return {} }
