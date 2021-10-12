@@ -15,7 +15,7 @@ const formData = {
   confirmPassword: '111111a!', // password
   phoneNumber: '010-1234-5678', // phone. 하이픈 제거
   companyName: 'nhn commerce',
-  policyAgree: true
+  policyAgree: true // 검증단계에서 사용하고 리퀘스트에서 제거
 }
 const isBusiness = true
 
