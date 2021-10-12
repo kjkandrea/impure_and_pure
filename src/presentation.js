@@ -17,7 +17,11 @@ const formData = {
   companyName: 'nhn commerce',
   policyAgree: true // 검증단계에서 사용하고 리퀘스트에서 제거
 }
-const isBusiness = true
+
+const post = async () => {
+  await new XMLHttpRequest()
+  return {}
+}
 
 // develop
 const validation = () => {}
@@ -28,23 +32,18 @@ const makeRequest = pipe(
   mapPropertiesValue,
 )
 
-const postRequest = async () => {
-  await new XMLHttpRequest()
-  return {}
-}
-
 const oldMain = formData => {
   validation(formData)
   const filtered = filterProperties(formData);
   const mappedKey = mapPropertiesKey(filtered)
   const mapped = mapPropertiesValue(mappedKey)
-  postRequest(mapped).then(goCommonLogin)
+  post(mapped).then(goCommonLogin)
 }
 
 const main = (next, data) => pipe (
   validation,
   makeRequest,
-  postRequest,
+  post,
   next // login 된 유저일 경우/아닐 경우
 )(data)
 
