@@ -26,7 +26,7 @@ const makeRequest = pipe(
 
 const postRequest = () => ipm
 
-const main = (data, next) => pipe (
+const main = (next, data) => pipe (
   validation,
   makeRequest,
   postRequest,
