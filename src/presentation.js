@@ -31,7 +31,7 @@ const goCommonLogin = () => {}
 
 // develop
 const validation = data => {
-  // ...
+  // ... throw
   return data
 }
 
@@ -41,14 +41,6 @@ const makeRequest = pipe(
   mapPropertiesValue,
 )
 
-const oldSubmit = formData => {
-  validation(formData)
-  const filtered = filterProperties(formData);
-  const mappedKey = mapPropertiesKey(filtered)
-  const mapped = mapPropertiesValue(mappedKey)
-  post(mapped).then(goCommonLogin)
-}
-
 const submit = (next, data) => pipe (
   validation,
   makeRequest,
@@ -56,14 +48,14 @@ const submit = (next, data) => pipe (
   next // login 된 유저일 경우/아닐 경우
 )(data)
 
-const curryMain = curry(submit)
+const curring = curry(submit)
 
-const businessMain = curryMain(goBusinessLogin)
-const commonMain = curryMain(goCommonLogin)
+const business = curring(goBusinessLogin)
+const common = curring(goCommonLogin)
 
 const main = formData => isBusiness
-  ? businessMain(formData)
-  : commonMain(formData)
+  ? business(formData)
+  : common(formData)
 
 main(formData)
 
