@@ -34,7 +34,7 @@ const oldMain = formData => {
   validation(formData)
   const filtered = filterProperties(formData);
   const mappedKey = mapPropertiesKey(filtered)
-  const mapped = mapPropertiesKey(mappedKey)
+  const mapped = mapPropertiesValue(mappedKey)
   postRequest(mapped).then(goCommonLogin)
 }
 
