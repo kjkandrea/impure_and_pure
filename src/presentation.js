@@ -22,6 +22,13 @@ const post = async req => {
   await fetch(req)
 }
 
+const goLogin = () => {}
+
+// new spec
+const isBusiness = true
+const goBusinessLogin = () => {}
+const goCommonLogin = () => {}
+
 // develop
 const validation = () => {}
 
@@ -48,8 +55,6 @@ const main = (next, data) => pipe (
 
 const curryMain = curry(main)
 
-const goBusinessLogin = () => {}
-const goCommonLogin = () => {}
 const businessMain = curryMain(goBusinessLogin)
 const commonMain = curryMain(goCommonLogin)
 
