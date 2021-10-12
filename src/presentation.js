@@ -28,7 +28,10 @@ const makeRequest = pipe(
   mapPropertiesValue,
 )
 
-const postRequest = () => {}
+const postRequest = async () => {
+  await new XMLHttpRequest()
+  return {}
+}
 
 const oldMain = formData => {
   validation(formData)
