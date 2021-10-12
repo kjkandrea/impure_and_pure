@@ -13,7 +13,7 @@ const formData = {
   id: 'andrea',
   password: '111111a!',
   confirmPassword: '111111a!',
-  phoneNumber: '01012345678',
+  phoneNumber: '010-1234-5678',
   companyName: 'nhn commerce',
   policyAgree: true
 }
