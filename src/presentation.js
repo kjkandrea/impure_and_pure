@@ -46,7 +46,7 @@ isLoggedIn
 
 
 function filterProperties () { return ipm }
-function mapPropertiesKey () { return ipm }
+function mapPropertiesKey () { return ipm } // bug here!
 function mapPropertiesValue () { return ipm }
 
 
