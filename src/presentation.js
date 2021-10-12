@@ -30,6 +30,14 @@ const makeRequest = pipe(
 
 const postRequest = () => {}
 
+const oldMain = formData => {
+  validation(formData)
+  const filtered = filterProperties(formData);
+  const mappedKey = mapPropertiesKey(filtered)
+  const mapped = mapPropertiesKey(mappedKey)
+  postRequest(mapped).then(goCommonLogin)
+}
+
 const main = (next, data) => pipe (
   validation,
   makeRequest,
