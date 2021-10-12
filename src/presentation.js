@@ -39,10 +39,10 @@ const main = (next, data) => pipe (
 
 const curryMain = curry(main)
 
-const loggedInNext = () => {}
-const guestNext = () => {}
-const businessMain = curryMain(loggedInNext)
-const commonMain = curryMain(guestNext)
+const goBusinessLogin = () => {}
+const goCommonLogin = () => {}
+const businessMain = curryMain(goBusinessLogin)
+const commonMain = curryMain(goCommonLogin)
 
 isBusiness
   ? businessMain(formData)
