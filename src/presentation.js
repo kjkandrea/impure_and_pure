@@ -9,7 +9,7 @@ import { pipe, curry } from 'ramda'
  */
 
 // sample
-const formData = {,
+const formData = {
   id: 'andrea',
   password: '111111a!',
   confirmPassword: '111111a!',
