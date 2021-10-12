@@ -38,7 +38,7 @@ const makeRequest = pipe(
   mapPropertiesValue,
 )
 
-const oldMain = formData => {
+const oldSubmit = formData => {
   validation(formData)
   const filtered = filterProperties(formData);
   const mappedKey = mapPropertiesKey(filtered)
@@ -46,23 +46,25 @@ const oldMain = formData => {
   post(mapped).then(goCommonLogin)
 }
 
-const main = (next, data) => pipe (
+const submit = (next, data) => pipe (
   validation,
   makeRequest,
   post,
   next // login 된 유저일 경우/아닐 경우
 )(data)
 
-const curryMain = curry(main)
+const curryMain = curry(submit)
 
 const businessMain = curryMain(goBusinessLogin)
 const commonMain = curryMain(goCommonLogin)
 
-isBusiness
+const main = formData => isBusiness
   ? businessMain(formData)
   : commonMain(formData)
 
+main(formData)
 
+// hoisted
 function filterProperties () { return {} }
 function mapPropertiesKey () { return {} } // bug here!
 function mapPropertiesValue () { return {} }
