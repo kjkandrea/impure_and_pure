@@ -19,8 +19,7 @@ const formData = {
 }
 
 const post = async req => {
-  await new XMLHttpRequest()
-  return {}
+  await fetch(req)
 }
 
 // develop
